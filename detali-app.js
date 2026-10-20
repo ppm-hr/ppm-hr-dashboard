@@ -45,6 +45,7 @@ const DEPT_COLORS = {
 // ── Задачи на неделю (из Google Sheets, обновлено 09.06.2026) ──
 const WEEKLY_TASKS = __D.WEEKLY_TASKS;
 const WEEK_HIRES = __D.WEEK_HIRES || [];
+const CLOSE_TIME = __D.CLOSE_TIME || [{n:'Забота',d:5},{n:'ИТ',d:32},{n:'ТОП',d:38}];
 
 // обновлено из Google Sheets 16.06.2026 (нед. 24)
 const DEPT_BREAKDOWN = __D.DEPT_BREAKDOWN;
@@ -65,8 +66,9 @@ let initialized = false;
 const easeOut = t => 1 - Math.pow(1-t,3);
 function countUp(el, to, dur=600, dec=0, sfx=''){
   if(el===null) return;
-  const t0=performance.now();
+  const t0=performance.now(); el._cu=t0;
   (function tick(now){
+    if(el._cu!==t0) return;
     const p=Math.min((now-t0)/dur,1);
     el.textContent=(dec>0?(to*easeOut(p)).toFixed(dec):Math.round(to*easeOut(p)))+sfx;
     if(p<1) requestAnimationFrame(tick);
@@ -141,14 +143,14 @@ function renderKPIs(){
       hires=Object.values(MONTHS).reduce((s,m)=>s+(m.hires||0),0); dHires=null; sHires='с начала года';
       const _tw=Object.values(MONTHS).filter(m=>m.tto!=null&&m.hires>0);
       const _tsum=_tw.reduce((s,m)=>s+m.tto*m.hires,0), _tn=_tw.reduce((s,m)=>s+m.hires,0);
-      kpi6val=_tn?parseFloat((_tsum/_tn).toFixed(1)):null; dKpi6=null; sKpi6='дней до оффера'; lblKpi6='Среднее TTO';
+      kpi6val=null; dKpi6=null; sKpi6=''; lblKpi6='Ср. срок закрытия';
       openVac=openNow; sOpen='сейчас в работе';
     } else {
       const m=parseInt(period), d=MONTHS[m], prev=m>1?MONTHS[m-1]:null;
       hc=d.hc; dHC=null; sHC=`на конец ${d.prep}`;
       hires=d.hires; dHires=prev?d.hires-prev.hires:null; sHires=`в ${d.prep}`;
-      kpi6val=d.tto; dKpi6=prev&&prev.tto?parseFloat((d.tto-prev.tto).toFixed(1)):null;
-      sKpi6='дней до оффера'; lblKpi6='Среднее TTO';
+      kpi6val=null; dKpi6=null;
+      sKpi6=''; lblKpi6='Ср. срок закрытия';
       openVac=openNow; sOpen='сейчас в работе';
     }
   } else {
@@ -185,7 +187,7 @@ function renderKPIs(){
   countUp($('v-mgr'),+(ST.managers/ST.hc*100).toFixed(1),600,1,'%');
   countUp($('v-open'),openVac);
   countUp($('v-hires'),hires);
-  if(kpi6val!==null) countUp($('v-kpi6'),kpi6val,600,mode==='weekly'&&period!=='all'?0:1,mode==='weekly'&&period!=='all'?'':mode==='monthly'?'д.':'');
+  if(kpi6val!==null) countUp($('v-kpi6'),kpi6val,600,mode==='weekly'?0:1,mode==='weekly'&&period!=='all'?'':mode==='monthly'?'д.':'');
 
   // Текучесть — из MONTHS (в источнике больше нет причины увольнения → vol/inv могут быть null)
   // блок текучести удалён с дашборда по решению Екатерины (04.08.2026); данные fired остаются в MONTHS
@@ -199,6 +201,10 @@ function renderKPIs(){
   setTxt('s-hires',sHires||'');
   setTxt('s-kpi6',sKpi6||'');
   setTxt('lbl-kpi6',lblKpi6||'Среднее TTO');
+  // «Ср. срок закрытия» по направлениям (Time-to-hire, закрытые вакансии 2026; утверждено Екатериной 20.10)
+  if(mode==='monthly'){
+    $('v-kpi6')._cu=null; $('v-kpi6').innerHTML=CLOSE_TIME.map(x=>`<div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:15px;line-height:1.55;white-space:nowrap"><span style="font-weight:600;color:var(--muted)" title="${x.n==='ТОП'?'ТОП-менеджмент (C-level / CEO-1)':x.n}">${x.n}</span><span style="font-weight:800">${x.d}<span style="font-size:11px;font-weight:600;color:var(--muted)"> дн.</span></span></div>`).join('');
+  }
 
   // Update donut center number
   const dcEl=$('dc-num');
