@@ -266,6 +266,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 /* ── Workload bar ── */
 .wl-track{display:inline-flex;height:4px;width:48px;background:#F3F4F6;border-radius:2px;overflow:hidden;vertical-align:middle;margin-left:6px}
 .wl-fill{height:100%;border-radius:2px}
+.wk-grid{display:grid;grid-template-columns:1fr 1fr 0.8fr;gap:0}
+@media(max-width:1000px){.wk-grid{grid-template-columns:1fr}.wk-grid>div{padding:0 0 18px!important;border-right:0!important}}
 </style>
 </head>
 <body>
@@ -341,13 +343,20 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
   <!-- Weekly tasks -->
   <div class="card p20 sec" id="cc-weekly">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div class="wk-grid">
       <!-- Итоги предыдущей недели -->
       <div style="padding-right:24px;border-right:1px solid var(--border)">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
           <span id="wt-done-lbl" style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--micro)">Выходы недели</span>
         </div>
         <div id="tasks-done"></div>
+      </div>
+      <!-- Открытые вакансии -->
+      <div style="padding:0 24px;border-right:1px solid var(--border)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+          <span id="wt-open-lbl" style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--micro)">Открытые вакансии</span>
+        </div>
+        <div id="wk-open"></div>
       </div>
       <!-- Фокусы текущей недели -->
       <div style="padding-left:24px">

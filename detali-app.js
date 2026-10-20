@@ -496,6 +496,22 @@ function renderWeeklyTasks(){
     </div>`;
   }).join('') : `<div style="padding:14px 0;font-size:12.5px;color:var(--micro)">За эту неделю выходов не было.</div>`;
 
+  // Открытые вакансии — рядом с выходами
+  const OPC={Critical:['#FEE4E2','#F04438'],High:['#FEF6E7','#F79009'],Medium:['#EFF4FF','#3B6FE0'],Low:['#E8F8F0','#12B76A']};
+  const ol=document.getElementById('wt-open-lbl'); if(ol) ol.textContent='Открытые вакансии · '+(OPEN_VAC||[]).length;
+  const openEl=document.getElementById('wk-open');
+  if(openEl) openEl.innerHTML=(OPEN_VAC||[]).length?OPEN_VAC.map(v=>{
+    const c=OPC[v.p]||OPC.Medium;
+    return `<div style="display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #F3F4F6">
+      <div style="width:20px;height:20px;border-radius:50%;background:${c[0]};color:${c[1]};display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-weight:800;font-size:11px">○</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:13px;font-weight:600;color:var(--text);line-height:1.4">${v.name}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4">${v.dept||'—'} · ${v.rec||'—'} · ${v.days} дн.</div>
+      </div>
+      <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:${c[0]};color:${c[1]};flex-shrink:0;margin-top:2px">${v.p}</span>
+    </div>`;
+  }).join(''):`<div style="padding:14px 0;font-size:12.5px;color:var(--micro)">Открытых вакансий нет.</div>`;
+
   // Фокусы
   const focusEl = document.getElementById('tasks-focus');
   if(focusEl) focusEl.innerHTML = WEEKLY_TASKS.focus.items.map((t,i) => {
