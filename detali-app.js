@@ -898,13 +898,9 @@ function initQoH(){
   });
 }
 
-const FMT_DATA = [
-  {label:'Удалённо',     count:76, color:'#3B6FE0'},
-  {label:'Офис Москва',  count:24, color:'#10B981'},
-  {label:'Офис СПб',     count:22, color:'#8B5CF6'},
-  {label:'Гибрид',       count:7,  color:'#F79009'},
-  {label:'Не указано',   count:1,  color:'#E5E7EB'},
-];
+// формат работы — из ШТАТКИ (колонки «Формат работы» + «Город»), собирается вместе с остальными данными
+const FMT_COLORS = {'Удалённо':'#3B6FE0','Офис Москва':'#10B981','Офис СПб':'#8B5CF6','Гибрид':'#F79009','Не указано':'#E5E7EB'};
+const FMT_DATA = (__D.FMT || []).map(d=>({label:d.label,count:d.count,color:FMT_COLORS[d.label]||'#9CA3AF'}));
 function initWorkFormat(){
   new Chart(document.getElementById('ch-fmt').getContext('2d'),{
     type:'doughnut',
@@ -912,6 +908,7 @@ function initWorkFormat(){
     options:{responsive:false,cutout:'62%',plugins:{legend:{display:false},tooltip:{...TT,callbacks:{label:c=>`${c.label}: ${c.raw} чел.`}}},animation:{duration:700}},
   });
   const total=FMT_DATA.reduce((s,d)=>s+d.count,0);
+  const fe=document.getElementById('fmt-total'); if(fe) fe.textContent=total;
   document.getElementById('fmt-legend').innerHTML=FMT_DATA.map(d=>`
     <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
       <div style="width:8px;height:8px;border-radius:50%;background:${d.color};flex-shrink:0"></div>
