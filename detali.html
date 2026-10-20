@@ -395,7 +395,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     </div>
   </div>
 
-  <!-- Row 2: Structure + Open Vacancies -->
+  <!-- Структура персонала + качество найма + формат работы -->
   <div class="grid-2 sec">
     <div class="card p20 skeleton" id="cc4">
       <div class="ch">
@@ -413,35 +413,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
         <div style="flex:1;min-width:210px" id="sp-legend"></div>
       </div>
     </div>
-
-    <!-- Открытые вакансии -->
-    <div class="card skeleton" style="padding:20px 20px 0;display:flex;flex-direction:column" id="cc5">
-      <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;flex-shrink:0">
-        <span class="lbl mb0">Открытые вакансии</span>
-        <span style="font-size:13px;font-weight:700;color:var(--text)" id="vac-badge">19</span>
-      </div>
-      <div style="overflow-y:auto;max-height:520px;margin:0 -20px;flex:1">
-        <table style="width:100%;border-collapse:collapse" id="vac-table">
-          <thead>
-            <tr style="position:sticky;top:0;background:#fff;z-index:1;box-shadow:0 1px 0 #E5E7EB">
-              <th style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--micro);padding:0 12px 10px 20px;text-align:left;border-bottom:1px solid var(--border)">Вакансия</th>
-              <th style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--micro);padding:0 10px 10px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap">Отдел</th>
-              <th style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--micro);padding:0 10px 10px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap">Рекрутер</th>
-              <th style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--micro);padding:0 10px 10px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap">Дней</th>
-              <th style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--micro);padding:0 20px 10px 10px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap">Приоритет</th>
-            </tr>
-          </thead>
-          <tbody id="vac-tbody"></tbody>
-        </table>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Quality of Hire + Work Format -->
-  <div class="s-div"><span class="lbl">Качество найма и формат работы</span><div class="div-line"></div></div>
-  <div class="grid-2 sec" id="qoh-row">
-    <!-- QoH -->
+    <div style="display:flex;flex-direction:column;gap:14px">
     <div class="card p20 skeleton" id="cc-qoh">
       <div class="lbl" style="margin-bottom:14px">Качество найма (Quality of Hire)</div>
       <div style="display:flex;align-items:center;gap:20px">
@@ -473,7 +445,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
         </div>
       </div>
     </div>
-    <!-- Work Format -->
     <div class="card p20 skeleton" id="cc-fmt">
       <div class="lbl" style="margin-bottom:14px">Формат работы</div>
       <div style="display:flex;align-items:center;gap:16px">
@@ -486,6 +457,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
         </div>
         <div style="flex:1" id="fmt-legend"></div>
       </div>
+    </div>
     </div>
   </div>
 
