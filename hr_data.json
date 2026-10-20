@@ -2,10 +2,10 @@
   "as_of": "2026-10-20",
   "headcount": {
     "active": 155,
-    "plan": 167,
-    "staffing_pct": 92.8,
-    "managers": 38,
-    "ic": 117,
+    "plan": 165,
+    "staffing_pct": 93.9,
+    "managers": 36,
+    "ic": 119,
     "on_probation": 26,
     "by_dept": {
       "Забота": 51,
@@ -28,7 +28,8 @@
       "офис": 74,
       "гибрид": 13,
       "удаленно": 68
-    }
+    },
+    "managers_pct": 23.2
   },
   "hires_by_month": {
     "1": 4,
@@ -59,19 +60,19 @@
     }
   },
   "vacancies": {
-    "total_rows": 187,
+    "total_rows": 185,
     "status_counts": {
       "finished": 158,
-      "in progress": 12,
       "отказ от оффера": 10,
+      "in progress": 10,
       "принят оффер": 4,
       "увольнение на ис": 2
     },
-    "open": 12,
+    "open": 10,
     "open_by_priority": {
       "Critical": 5,
-      "Low": 3,
       "Medium": 2,
+      "Low": 1,
       "High": 2
     },
     "oldest": {
@@ -90,14 +91,6 @@
         "rec": "Шляховая Саша",
         "open": "21.08",
         "age": 60
-      },
-      {
-        "vac": "BizDev",
-        "dept": "maze",
-        "pri": "Low",
-        "rec": "Сергеева Елена",
-        "open": "25.08",
-        "age": 56
       },
       {
         "vac": "Руководитель по реферальной программе",
@@ -130,6 +123,14 @@
         "rec": "Череда Саша",
         "open": "28.09",
         "age": 22
+      },
+      {
+        "vac": "Менеджер по работе с блогерами",
+        "dept": "Маркетинг",
+        "pri": "Medium",
+        "rec": "Чуфирина София",
+        "open": "05.10",
+        "age": 15
       }
     ],
     "tto_median": 8.0,
@@ -140,7 +141,8 @@
     "started": 157,
     "offer_refusals": 10,
     "offer_acceptance_pct": 93.2,
-    "open_positions": 15
+    "open_positions": 10,
+    "excluded": "maze"
   },
   "sources_top": {
     "hh.ru": 66,
