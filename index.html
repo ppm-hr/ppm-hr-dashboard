@@ -39,6 +39,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .section-cap .hint{font-size:11.5px;color:var(--micro)}
 .lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--micro)}
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.tth-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:560px){.tth-row{grid-template-columns:1fr}}
 @media(min-width:1060px){.kpi-row{grid-template-columns:repeat(6,1fr)}}
 @media(max-width:560px){.kpi-row{grid-template-columns:repeat(2,1fr)}}
 .kpi-card{background:var(--card);border-radius:var(--radius);padding:14px 14px 12px;box-shadow:var(--shadow);transition:box-shadow .18s;position:relative;overflow:hidden}
@@ -169,6 +171,29 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
   </div>
 
   <div class="section-cap">
+    <h2>Средний срок найма</h2>
+    <span class="hint">Time-to-hire по закрытым вакансиям 2026 · лист «Вакансии»</span>
+  </div>
+
+  <div class="tth-row">
+    <div class="kpi-card">
+      <div class="kpi-lbl">Забота</div>
+      <div class="kpi-val">5<span class="u">дн.</span></div>
+      <div class="kpi-sub">массовый найм · 78 наймов</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-lbl">ИТ</div>
+      <div class="kpi-val">32<span class="u">дн.</span></div>
+      <div class="kpi-sub">25 наймов</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-lbl">ТОП-менеджмент</div>
+      <div class="kpi-val">38<span class="u">дн.</span></div>
+      <div class="kpi-sub">уровень C-level / CEO-1</div>
+    </div>
+  </div>
+
+  <div class="section-cap">
     <h2>Требует внимания</h2>
     <span class="hint">исключения, которые топ видит первыми</span>
   </div>
@@ -243,16 +268,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
         <div class="bs"><div class="n" style="color:var(--muted)">13</div><div class="l">гибрид</div></div>
       </div>
     </div>
-  </div>
-
-  <div class="card" style="margin-bottom:14px">
-    <div class="ch"><h3>Средний срок найма по направлениям</h3><span class="badge">лист «Вакансии» · закрытые вакансии</span></div>
-    <div class="big-stat" style="gap:40px">
-      <div class="bs"><div class="n">5<span style="font-size:13px;font-weight:600;color:var(--muted)"> дн.</span></div><div class="l">Забота · 78 наймов</div></div>
-      <div class="bs"><div class="n">32<span style="font-size:13px;font-weight:600;color:var(--muted)"> дн.</span></div><div class="l">ИТ · 25 наймов</div></div>
-      <div class="bs"><div class="n" style="color:var(--warning)">38<span style="font-size:13px;font-weight:600;color:var(--muted)"> дн.</span></div><div class="l">ТОП-менеджмент · C-level / CEO-1</div></div>
-    </div>
-    <div style="margin-top:12px;font-size:11px;color:var(--micro)">Time-to-hire по закрытым вакансиям 2026. ТОП — позиции уровня C-level / CEO-1 (CTO, Операционный директор).</div>
   </div>
 
 </div>
