@@ -13,7 +13,9 @@ const WEEK_MAP = {};
 WEEKS.forEach((w,i)=>{ WEEK_MAP[w.key]=i; });
 
 // Weeks that have headcount data (starting from нед.6)
-const W_HC_WEEKS  = WEEKS.filter(w=>w.hc!==null);
+// рост штата — по ШТАТКЕ (численность на конец недели), если есть; иначе — старый ряд из «Кол-во нанятых»
+const W_HC_WEEKS  = (__D.HC_WEEKLY && __D.HC_WEEKLY.length) ? __D.HC_WEEKLY : WEEKS.filter(w=>w.hc!==null);
+const hcHit=(k,per)=>{ if(per==='all') return false; if(k===per) return true; const r=String(per).split('-').map(Number); return r.length===2&&+k>=r[0]&&+k<=r[1]; };
 const W_HC_LABELS = W_HC_WEEKS.map(w=>w.label);
 const W_HC_DATA   = W_HC_WEEKS.map(w=>w.hc);
 
@@ -328,12 +330,13 @@ function buildWeeklyHC(){
   const ctx=document.getElementById('ch-whc').getContext('2d');
 
   // Point colors: highlight selected week
-  const pointColors=W_HC_WEEKS.map(w=>
-    period==='all'||w.key!==period?'#3B6FE0':'#F04438'
-  );
-  const pointRadius=W_HC_WEEKS.map(w=>
-    period!=='all'&&w.key===period?6:3
-  );
+  const pointColors=W_HC_WEEKS.map(w=>hcHit(w.key,period)?'#F04438':'#3B6FE0');
+  const pointRadius=W_HC_WEEKS.map(w=>hcHit(w.key,period)?6:3);
+  if(W_HC_WEEKS.length){
+    const f=W_HC_WEEKS[0], l=W_HC_WEEKS[W_HC_WEEKS.length-1], dlt=l.hc-f.hc;
+    setTxt('hc-start',f.hc); setTxt('hc-now',l.hc); setTxt('hc-delta',(dlt>=0?'+':'')+dlt);
+    setTxt('hc-badge',`${f.label.replace('Нед. ','Недели ')} — ${l.key}`);
+  }
 
   const hcLabelsPlugin = {
     id:'hcLabels',
@@ -376,7 +379,7 @@ function buildWeeklyHC(){
     },
     options:{
       responsive:true,maintainAspectRatio:false,
-      layout:{padding:{top:22}},
+      layout:{padding:{top:22,right:16}},
       plugins:{legend:{display:false},tooltip:{...TT,callbacks:{label:c=>` ${c.raw} чел.`}}},
       scales:{
         x:{grid:{display:false},border:{display:false},ticks:{color:'#9CA3AF',font:{size:11},maxRotation:30}},
