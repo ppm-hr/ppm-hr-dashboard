@@ -891,9 +891,15 @@ document.querySelectorAll('.vtog').forEach(btn=>{
 // QUALITY OF HIRE + WORK FORMAT + REFERRALS
 // ══════════════════════════════════════════════════════════
 function initQoH(){
+  // из ШТАТКИ («Окончание испыт срока») + «ШТАТКА уволенные» (ушли в первые 3 мес.); QoH = прошли / (прошли + ушли на ИС)
+  const Q=__D.QOH||{passed:0,on:0,none:0,left:0,pct:null};
+  const st=(id,v)=>{const e=document.getElementById(id); if(e) e.textContent=v;};
+  st('qoh-pct',Q.pct!=null?Q.pct+'%':'—'); st('qoh-passed',Q.passed); st('qoh-on',Q.on); st('qoh-none',Q.none);
+  st('qoh-left',Q.left);
+  st('qoh-note',`QoH = прошли ИС / (прошли + ушли на ИС): ${Q.passed} из ${Q.passed+Q.left}. «Ушли на ИС» — уволились в 2026 году в первые 3 месяца работы. Данные — ШТАТКА на ${Q.asof||''}.`);
   new Chart(document.getElementById('ch-qoh').getContext('2d'),{
     type:'doughnut',
-    data:{labels:['Прошли ИС','На ИС','Нет данных'],datasets:[{data:[64,60,8],backgroundColor:['#12B76A','#F79009','#E5E7EB'],borderWidth:2,borderColor:'#fff',hoverOffset:6}]},
+    data:{labels:['Прошли ИС','На ИС','Ушли на ИС','Нет данных'],datasets:[{data:[Q.passed,Q.on,Q.left,Q.none],backgroundColor:['#12B76A','#F79009','#F04438','#E5E7EB'],borderWidth:2,borderColor:'#fff',hoverOffset:6}]},
     options:{responsive:false,cutout:'68%',plugins:{legend:{display:false},tooltip:{...TT,callbacks:{label:c=>`${c.label}: ${c.raw}`}}},animation:{duration:700}},
   });
 }

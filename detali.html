@@ -448,26 +448,28 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
         <div style="position:relative;flex-shrink:0">
           <canvas id="ch-qoh" width="130" height="130" style="width:130px;height:130px"></canvas>
           <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none">
-            <div style="font-size:22px;font-weight:800;color:var(--success)">100%</div>
+            <div style="font-size:22px;font-weight:800;color:var(--success)" id="qoh-pct">—</div>
             <div style="font-size:9px;color:var(--muted);margin-top:1px">QoH</div>
           </div>
         </div>
         <div style="flex:1">
           <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#DCFAE6;border-radius:10px;margin-bottom:7px">
             <span style="font-size:12px;font-weight:500;color:#065F46">✅ Прошли испытательный срок</span>
-            <span style="font-size:18px;font-weight:800;color:#12B76A">64</span>
+            <span style="font-size:18px;font-weight:800;color:#12B76A" id="qoh-passed">—</span>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#FEF6E7;border-radius:10px;margin-bottom:7px">
             <span style="font-size:12px;font-weight:500;color:#92400E">⏳ На испытательном сроке</span>
-            <span style="font-size:18px;font-weight:800;color:#F79009">60</span>
+            <span style="font-size:18px;font-weight:800;color:#F79009" id="qoh-on">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#FEE4E2;border-radius:10px;margin-bottom:7px">
+            <span style="font-size:12px;font-weight:500;color:#991B1B">✕ Ушли на испытательном сроке</span>
+            <span style="font-size:18px;font-weight:800;color:#F04438" id="qoh-left">—</span>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#F3F4F6;border-radius:10px">
             <span style="font-size:12px;font-weight:500;color:var(--muted)">— Нет данных о сроке</span>
-            <span style="font-size:18px;font-weight:800;color:var(--micro)">8</span>
+            <span style="font-size:18px;font-weight:800;color:var(--micro)" id="qoh-none">—</span>
           </div>
-          <div style="margin-top:10px;font-size:11px;color:var(--micro);line-height:1.5">
-            Из 124 сотрудников с данными об испытательном сроке — все 64, чей срок истёк, успешно его прошли.
-          </div>
+          <div style="margin-top:10px;font-size:11px;color:var(--micro);line-height:1.5" id="qoh-note"></div>
         </div>
       </div>
     </div>
