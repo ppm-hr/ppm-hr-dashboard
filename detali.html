@@ -369,6 +369,21 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     </div>
   </div>
 
+  <!-- Interviews chart — под выходами и вакансиями -->
+  <div class="card p20 skeleton sec" id="cc8">
+      <div class="ch mb0">
+        <span class="lbl mb0">Интервью по неделям</span>
+        <span class="badge" id="badge-int">765 итого</span>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 14px">
+        <div style="display:flex;align-items:center;gap:5px"><div style="width:9px;height:9px;border-radius:2px;background:#3B6FE0"></div><span style="font-size:11px;color:var(--muted)">HR</span></div>
+        <div style="display:flex;align-items:center;gap:5px"><div style="width:9px;height:9px;border-radius:2px;background:#10B981"></div><span style="font-size:11px;color:var(--muted)">Заказчик</span></div>
+        <div style="display:flex;align-items:center;gap:5px"><div style="width:9px;height:9px;border-radius:2px;background:#F79009"></div><span style="font-size:11px;color:var(--muted)">Техническое</span></div>
+        <div style="display:flex;align-items:center;gap:5px"><div style="width:9px;height:9px;border-radius:2px;background:#8B5CF6"></div><span style="font-size:11px;color:var(--muted)">Финальное</span></div>
+      </div>
+      <div style="height:200px;position:relative"><canvas id="ch-wint"></canvas></div>
+    </div>
+
   <!-- Row 1: Main chart -->
   <div class="sec">
     <div class="card p20 skeleton" id="cc1">
@@ -505,7 +520,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     <span class="lbl" id="weekly-section-title">Понедельная динамика</span>
     <div class="div-line"></div>
   </div>
-  <div class="grid-2 sec" id="weekly-charts">
+  <div class="sec" id="weekly-charts">
     <!-- Headcount chart -->
     <div class="card p20 skeleton" id="cc7">
       <div class="ch mb0">
@@ -524,20 +539,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
         </div>
       </div>
       <div style="height:200px;position:relative"><canvas id="ch-whc"></canvas></div>
-    </div>
-    <!-- Interviews chart -->
-    <div class="card p20 skeleton" id="cc8">
-      <div class="ch mb0">
-        <span class="lbl mb0">Интервью по неделям</span>
-        <span class="badge" id="badge-int">765 итого</span>
-      </div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 14px">
-        <div style="display:flex;align-items:center;gap:5px"><div style="width:9px;height:9px;border-radius:2px;background:#3B6FE0"></div><span style="font-size:11px;color:var(--muted)">HR</span></div>
-        <div style="display:flex;align-items:center;gap:5px"><div style="width:9px;height:9px;border-radius:2px;background:#10B981"></div><span style="font-size:11px;color:var(--muted)">Заказчик</span></div>
-        <div style="display:flex;align-items:center;gap:5px"><div style="width:9px;height:9px;border-radius:2px;background:#F79009"></div><span style="font-size:11px;color:var(--muted)">Техническое</span></div>
-        <div style="display:flex;align-items:center;gap:5px"><div style="width:9px;height:9px;border-radius:2px;background:#8B5CF6"></div><span style="font-size:11px;color:var(--muted)">Финальное</span></div>
-      </div>
-      <div style="height:200px;position:relative"><canvas id="ch-wint"></canvas></div>
     </div>
   </div>
 
