@@ -22,9 +22,11 @@ const W_NH_WEEKS  = WEEKS.filter(w=>w.newHires!==null);
 const W_NH_LABELS = W_NH_WEEKS.map(w=>w.label);
 const W_NH_DATA   = W_NH_WEEKS.map(w=>w.newHires);
 
-const W_INT_LABELS = WEEKS.map(w=>w.label);
-const W_INT_HR     = WEEKS.map(w=>w.hrInt);
-const W_INT_HM     = WEEKS.map(w=>w.hmInt);
+// для графика интервью — только недели, где интервью есть (без пустых столбцов)
+const INT_WEEKS = WEEKS.filter(w=>((w.hrInt||0)+(w.hmInt||0)+(w.techInt||0)+(w.finInt||0))>0);
+const W_INT_LABELS = INT_WEEKS.map(w=>w.label);
+const W_INT_HR     = INT_WEEKS.map(w=>w.hrInt);
+const W_INT_HM     = INT_WEEKS.map(w=>w.hmInt);
 
 const SOURCES = __D.SOURCES;
 const RECRUITERS = __D.RECRUITERS;
@@ -390,13 +392,13 @@ function buildWeeklyInterviews(){
   if(intChart){ intChart.destroy(); intChart=null; }
   const ctx=document.getElementById('ch-wint').getContext('2d');
   const a=(key)=>period==='all'?1:(key===period?1:0.3);
-  const hrBg   =WEEKS.map(w=>`rgba(59,111,224,${a(w.key)})`);
-  const hmBg   =WEEKS.map(w=>`rgba(16,185,105,${a(w.key)})`);
-  const techBg =WEEKS.map(w=>`rgba(247,144,9,${a(w.key)})`);
-  const finBg  =WEEKS.map(w=>`rgba(139,92,246,${a(w.key)})`);
-  const techData=WEEKS.map(w=>w.techInt);
-  const finData =WEEKS.map(w=>w.finInt);
-  const total=WEEKS.reduce((s,w)=>s+w.hrInt+w.hmInt+(w.techInt||0)+(w.finInt||0),0);
+  const hrBg   =INT_WEEKS.map(w=>`rgba(59,111,224,${a(w.key)})`);
+  const hmBg   =INT_WEEKS.map(w=>`rgba(16,185,105,${a(w.key)})`);
+  const techBg =INT_WEEKS.map(w=>`rgba(247,144,9,${a(w.key)})`);
+  const finBg  =INT_WEEKS.map(w=>`rgba(139,92,246,${a(w.key)})`);
+  const techData=INT_WEEKS.map(w=>w.techInt);
+  const finData =INT_WEEKS.map(w=>w.finInt);
+  const total=INT_WEEKS.reduce((s,w)=>s+w.hrInt+w.hmInt+(w.techInt||0)+(w.finInt||0),0);
   setTxt('badge-int',`${total} итого`);
 
   const totalLabelsPlugin = {
