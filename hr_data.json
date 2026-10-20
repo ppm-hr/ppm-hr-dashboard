@@ -1,9 +1,9 @@
 {
-  "as_of": "2026-09-29",
+  "as_of": "2026-10-20",
   "headcount": {
     "active": 152,
-    "plan": 168,
-    "staffing_pct": 90.5,
+    "plan": 164,
+    "staffing_pct": 92.7,
     "managers": 34,
     "ic": 118,
     "on_probation": 29,
@@ -57,100 +57,101 @@
     }
   },
   "vacancies": {
-    "total_rows": 184,
+    "total_rows": 189,
     "status_counts": {
-      "finished": 148,
-      "in progress": 16,
-      "отказ от оффера": 7,
-      "принят оффер": 7,
-      "увольнение на ис": 3,
-      "freeze": 2
+      "finished": 160,
+      "in progress": 12,
+      "отказ от оффера": 10,
+      "принят оффер": 4,
+      "увольнение на ис": 2
     },
-    "open": 16,
+    "open": 12,
     "open_by_priority": {
-      "High": 5,
-      "Critical": 6,
-      "Low": 2,
-      "Medium": 3
+      "Critical": 5,
+      "Low": 3,
+      "Medium": 2,
+      "High": 2
     },
     "oldest": {
-      "vac": "Бизнес-ассистент",
-      "dept": "Управление",
-      "pri": "High",
-      "rec": "Соня",
-      "open": "20.07",
-      "age": 71
+      "vac": "Руководитель направления B2B",
+      "dept": "Продукт",
+      "pri": "Critical",
+      "rec": "София, Саша Ш",
+      "open": "21.08",
+      "age": 60
     },
     "top_aging": [
-      {
-        "vac": "Бизнес-ассистент",
-        "dept": "Управление",
-        "pri": "High",
-        "rec": "Соня",
-        "open": "20.07",
-        "age": 71
-      },
-      {
-        "vac": "Руководитель AI направления",
-        "dept": "ИТ",
-        "pri": "High",
-        "rec": "София",
-        "open": "27.07",
-        "age": 64
-      },
-      {
-        "vac": "DevSec",
-        "dept": "ИТ",
-        "pri": "Critical",
-        "rec": "Лена",
-        "open": "27.07",
-        "age": 64
-      },
-      {
-        "vac": "Backend",
-        "dept": "ИТ",
-        "pri": "High",
-        "rec": "Лена",
-        "open": "27.07",
-        "age": 64
-      },
-      {
-        "vac": "Team Lead",
-        "dept": "ИТ",
-        "pri": "Critical",
-        "rec": "Лена",
-        "open": "31.07",
-        "age": 60
-      },
       {
         "vac": "Руководитель направления B2B",
         "dept": "Продукт",
         "pri": "Critical",
-        "rec": "София",
+        "rec": "София, Саша Ш",
         "open": "21.08",
-        "age": 39
+        "age": 60
+      },
+      {
+        "vac": "BizDev",
+        "dept": "maze",
+        "pri": "Low",
+        "rec": "Лена",
+        "open": "25.08",
+        "age": 56
+      },
+      {
+        "vac": "Руководитель по реферальной программе",
+        "dept": "Маркетинг",
+        "pri": "Critical",
+        "rec": "Саша Ш",
+        "open": "14.09",
+        "age": 36
+      },
+      {
+        "vac": "DevOps",
+        "dept": "ИТ",
+        "pri": "Critical",
+        "rec": "Лена",
+        "open": "17.09",
+        "age": 33
+      },
+      {
+        "vac": "DevOps",
+        "dept": "ИТ",
+        "pri": "Critical",
+        "rec": "Лена",
+        "open": "17.09",
+        "age": 33
+      },
+      {
+        "vac": "Старший специалист отдела заботы  L3 (день/ночь 13 ч)",
+        "dept": "Забота",
+        "pri": "Medium",
+        "rec": "Саша Ч",
+        "open": "28.09",
+        "age": 22
       }
     ],
-    "tto_median": 7.0,
-    "tto_mean": 13.8,
+    "tto_median": 8.0,
+    "tto_mean": 15.3,
     "tth_median": 13.0,
-    "tth_mean": 19.1,
-    "offers_made_jo": 143,
-    "started": 152,
-    "offer_acceptance_pct": 95.1,
-    "offer_refusals": 7
+    "tth_mean": 19.6,
+    "offers_made_jo": 148,
+    "started": 160,
+    "offer_refusals": 10,
+    "offer_acceptance_pct": 93.2,
+    "open_positions": 15
   },
   "sources_top": {
     "hh.ru": 66,
-    "реферал": 27,
+    "реферал": 26,
+    "hh": 21,
     "холодный поиск": 14,
-    "hh": 14,
-    "hh поиск": 5,
+    "hh поиск": 6,
     "хх": 4,
-    "кадровое агентство": 3
+    "hh отклик": 3
   },
   "staffing_weekly_last": {
     "week": "39",
     "pct": 87.5
-  }
+  },
+  "headcount_note": "штат — ШТАТКА на 29.09"
 }
