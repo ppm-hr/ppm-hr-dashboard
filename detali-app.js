@@ -898,6 +898,7 @@ function initQoH(){
   const st=(id,v)=>{const e=document.getElementById(id); if(e) e.textContent=v;};
   st('qoh-pct',Q.pct!=null?Q.pct+'%':'—'); st('qoh-passed',Q.passed); st('qoh-on',Q.on); st('qoh-none',Q.none);
   st('qoh-left',Q.left);
+  const nr=document.getElementById('qoh-none'); if(nr&&nr.parentElement) nr.parentElement.style.display=Q.none?'':'none';
   st('qoh-note',`QoH = прошли ИС / (прошли + ушли на ИС): ${Q.passed} из ${Q.passed+Q.left}. «Ушли на ИС» — уволились в 2026 году в первые 3 месяца работы. Данные — ШТАТКА на ${Q.asof||''}.`);
   new Chart(document.getElementById('ch-qoh').getContext('2d'),{
     type:'doughnut',

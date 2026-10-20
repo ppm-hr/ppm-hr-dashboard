@@ -6,7 +6,7 @@
     "staffing_pct": 93.9,
     "managers": 36,
     "ic": 119,
-    "on_probation": 26,
+    "on_probation": 30,
     "by_dept": {
       "Забота": 51,
       "ИТ": 26,
@@ -171,5 +171,13 @@
       "n": 2,
       "def": "Уровень C-level / CEO-1"
     }
+  },
+  "qoh": {
+    "passed": 125,
+    "on": 30,
+    "none": 0,
+    "left": 16,
+    "pct": 89,
+    "asof": "20.10.2026"
   }
 }
