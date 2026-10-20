@@ -395,6 +395,9 @@ function buildOrg(people){const nodes={},links={},ids=new Map(),nameId={};
   people.forEach(p=>{const id=ids.get(p);let pa=null;const pb=p.boss?findBoss(p.boss,id):null;
     if(p===gd)pa=null;else if(pb)pa=pb;else{const h=headOf[p.d];pa=(h&&h!==p)?ids.get(h):gdId;}
     if(pa)links[uid()]={from:pa,to:id};});
+  // защита от циклов (руководитель ушёл → подстановка главы отдела может замкнуть ветку)
+  const par={};Object.entries(links).forEach(([k,l])=>par[l.to]=k);
+  Object.keys(par).forEach(id=>{const seen=new Set([id]);let j=id;while(par[j]){j=links[par[j]].from;if(seen.has(j)){links[par[id]].from=gdId;break;}seen.add(j);}});
   return{nodes,links};}
 </script>
 <script src="refresh-button.js"></script>
