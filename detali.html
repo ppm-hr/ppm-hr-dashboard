@@ -395,6 +395,33 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     </div>
   </div>
 
+  <!-- Weekly charts (richer in weekly mode, compact in monthly) -->
+  <div class="s-div" id="section-weekly-label">
+    <span class="lbl" id="weekly-section-title">Понедельная динамика</span>
+    <div class="div-line"></div>
+  </div>
+  <div class="sec" id="weekly-charts">
+    <!-- Headcount chart -->
+    <div class="card p20 skeleton" id="cc7">
+      <div class="ch mb0">
+        <span class="lbl mb0" id="lbl-w-hc">Рост штата</span>
+        <span class="badge" id="hc-badge">—</span>
+      </div>
+      <div style="display:flex;gap:20px;margin:10px 0 14px" id="hc-summary">
+        <div class="ws-item" style="flex:none;padding:0;border:none;text-align:left">
+          <div class="ws-lbl">Старт</div><div class="ws-val" style="color:var(--muted);font-size:18px" id="hc-start">—</div>
+        </div>
+        <div class="ws-item" style="flex:none;padding:0;border:none;text-align:left">
+          <div class="ws-lbl">Сейчас</div><div class="ws-val" style="color:var(--primary);font-size:18px" id="hc-now">—</div>
+        </div>
+        <div class="ws-item" style="flex:none;padding:0;border:none;text-align:left">
+          <div class="ws-lbl">Прирост</div><div class="ws-val" style="color:var(--success);font-size:18px" id="hc-delta">—</div>
+        </div>
+      </div>
+      <div style="height:200px;position:relative"><canvas id="ch-whc"></canvas></div>
+    </div>
+  </div>
+
   <!-- Структура персонала + качество найма + формат работы -->
   <div class="grid-2 sec">
     <div class="card p20 skeleton" id="cc4">
@@ -486,33 +513,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
           <tbody id="closed-body"></tbody>
         </table>
       </div>
-    </div>
-  </div>
-
-  <!-- Weekly charts (richer in weekly mode, compact in monthly) -->
-  <div class="s-div" id="section-weekly-label">
-    <span class="lbl" id="weekly-section-title">Понедельная динамика</span>
-    <div class="div-line"></div>
-  </div>
-  <div class="sec" id="weekly-charts">
-    <!-- Headcount chart -->
-    <div class="card p20 skeleton" id="cc7">
-      <div class="ch mb0">
-        <span class="lbl mb0" id="lbl-w-hc">Рост штата</span>
-        <span class="badge" id="hc-badge">—</span>
-      </div>
-      <div style="display:flex;gap:20px;margin:10px 0 14px" id="hc-summary">
-        <div class="ws-item" style="flex:none;padding:0;border:none;text-align:left">
-          <div class="ws-lbl">Старт</div><div class="ws-val" style="color:var(--muted);font-size:18px" id="hc-start">—</div>
-        </div>
-        <div class="ws-item" style="flex:none;padding:0;border:none;text-align:left">
-          <div class="ws-lbl">Сейчас</div><div class="ws-val" style="color:var(--primary);font-size:18px" id="hc-now">—</div>
-        </div>
-        <div class="ws-item" style="flex:none;padding:0;border:none;text-align:left">
-          <div class="ws-lbl">Прирост</div><div class="ws-val" style="color:var(--success);font-size:18px" id="hc-delta">—</div>
-        </div>
-      </div>
-      <div style="height:200px;position:relative"><canvas id="ch-whc"></canvas></div>
     </div>
   </div>
 
